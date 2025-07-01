@@ -12,6 +12,10 @@ import {
   TableRow,
   Table,
 } from "./components/ui/table";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+
+dayjs.extend(relativeTime);
 
 function App() {
   const [search, setSearch] = useState("");
@@ -102,7 +106,7 @@ function App() {
                     {message.pathway.sender?.name ||
                       message.pathway.receiver?.name}
                   </TableCell>
-                  <TableCell>{message.created}</TableCell>
+                  <TableCell>{dayjs(message.created).fromNow()}</TableCell>
                 </TableRow>
               ))
             )
