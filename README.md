@@ -4,15 +4,19 @@ This is a simple assignment that displays layerzero messages for a given address
 
 ## Getting Started
 
-First, run the development server:
+First, install the dependencies:
 
 ```bash
-npm run dev
-# or
-yarn dev
+pnpm install
 ```
 
-Open [http://localhost:5173](http://localhost:5173) with your browser to see the result.
+Then, run the development server:
+
+```bash
+pnpm run dev
+```
+
+Finally, open the browser and navigate to `http://localhost:5173`.
 
 ## Configuration
 
