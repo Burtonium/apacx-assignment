@@ -3,6 +3,7 @@ import { z } from "zod";
 export const layerZeroWalletMessagesSchema = z.object({
   data: z.array(
     z.object({
+      guid: z.string(),
       status: z.object({
         name: z.enum(
           [
@@ -11,6 +12,7 @@ export const layerZeroWalletMessagesSchema = z.object({
             "FAILED",
             "UNRESOLVABLE_COMMAND",
             "MALFORMED_COMMAND",
+            "CONFIRMING",
           ],
           { message: "Invalid message status" }
         ),
@@ -18,6 +20,16 @@ export const layerZeroWalletMessagesSchema = z.object({
       pathway: z.object({
         nonce: z.number(),
         id: z.string(),
+        sender: z
+          .object({
+            name: z.string().optional(),
+          })
+          .optional(),
+        receiver: z
+          .object({
+            name: z.string().optional(),
+          })
+          .optional(),
       }),
       source: z.object({
         tx: z.object({
